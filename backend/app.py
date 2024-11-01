@@ -1,19 +1,39 @@
-# app.py
 from flask import Flask, send_from_directory
+# Import your database initialization function and blueprint
+# from your_module import init_db, bp
+
 from db_config import init_db
 from routes import bp
+
 
 app = Flask(__name__, static_folder='static/skyway_frontend/browser')
 init_db(app)
 app.register_blueprint(bp)
 
 # Serve Angular index.html for the base route
+
+
+app = Flask(__name__, static_folder='static/skyway_frontend/browser')
+
 @app.route('/')
+def serve_index():
+    return send_from_directory(app.static_folder, 'index.csr.html')
+
 @app.route('/<path:path>')
-def serve_angular(path=''):
-    if path != "" and path != "index.html" and path.startswith("api/"):
-        return app.send_static_file(path)
-    return send_from_directory(app.static_folder, 'index.html')
+def serve_static(path):
+    return send_from_directory(app.static_folder, path)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+# @app.route('/')
+# @app.route('/<path:path>')
+# def serve_angular(path=''):
+#     if path != "" and path.startswith("api/"):
+#         return app.send_static_file(path)
+#     return send_from_directory(app.static_folder, 'index.csr.html')
+#
+# if __name__ == '__main__':
+#     app.run(debug=True)
