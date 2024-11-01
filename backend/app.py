@@ -26,14 +26,3 @@ def serve_static(path):
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-
-# @app.route('/')
-# @app.route('/<path:path>')
-# def serve_angular(path=''):
-#     if path != "" and path.startswith("api/"):
-#         return app.send_static_file(path)
-#     return send_from_directory(app.static_folder, 'index.csr.html')
-#
-# if __name__ == '__main__':
-#     app.run(debug=True)
