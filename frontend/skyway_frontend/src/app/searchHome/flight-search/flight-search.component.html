@@ -1,0 +1,72 @@
+
+<form class="search-form"   #searchForm="ngForm" (ngSubmit)="navigateToSearchRes(searchForm)">
+
+    <div class="input-container">
+
+    <div class="input-row">
+
+        <div id="flight-type" class="button-group">
+            <button
+            type="button"
+              class="button"
+              [ngClass]="{'active': selectedOption === 'Roundtrip'}"
+              (click)="selectOption('Roundtrip')">
+              Roundtrip
+            </button>
+            <button
+            type="button"
+              class="button "
+              [ngClass]="{'active': selectedOption === 'One Way'}"
+              (click)="selectOption('One Way')">
+              One Way
+            </button>
+            <button
+            type="button"
+              class="button recentButton"
+                >
+              Recent Searches
+            </button>
+          </div>
+
+    </div>
+
+    <!-- <app-airport-search> </app-airport-search> -->
+
+      <div class="input-row">
+        <input id="from" name="from" type="text" class="input" placeholder="From" required ngModel />
+
+        <input id="to" name="to" type="text" class="input" placeholder="To" required ngModel />
+      </div>
+
+      <div class="input-row">
+        <input id="guests" name="guests" type="number" min="1" class="input" placeholder="1 Guest" required ngModel/>
+
+        <input
+        id="depart"
+        name="depart"
+        type="text"
+        class="input"
+        placeholder="Depart Date"
+        onfocus="(this.type='date')"
+        onblur="(this.type='text')"
+        required ngModel
+
+      />
+        <input
+        id="return"
+        name="return"
+        type="text"
+        class="input"
+        placeholder="Return Date"
+        onfocus="(this.type='date')"
+        onblur="(this.type='text')"
+        *ngIf="selectedOption === 'Roundtrip'"
+        required ngModel
+
+      />
+       <button type="submit"  class="search-button">Search</button>
+    </div>
+</div>
+
+
+  </form>

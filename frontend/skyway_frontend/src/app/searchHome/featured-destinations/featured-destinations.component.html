@@ -1,0 +1,12 @@
+<div class="city-cards-container">
+    <app-destination-card
+      *ngFor="let city of cities"
+      [cityName]="city.cityName"
+      [description]="city.description"
+      [price]="city.price"
+      [imageUrl]="city.imageUrl"
+      [searchLink]="city.searchLink"  
+    ></app-destination-card>
+  </div>
+
+ 

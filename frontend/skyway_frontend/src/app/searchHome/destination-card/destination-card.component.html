@@ -1,0 +1,12 @@
+<div class="card">
+    <img [src]="imageUrl" [alt]="cityName + ' image'" style="width: 100%" />
+    <div class="container">
+      <h4 class="city"><b>{{ cityName }}</b></h4>
+      <p class="description">{{ description }}</p>
+      <div>
+        <p class="price">From ${{ price }}</p>
+        <button (click)="navigateToSearch(searchLink)">Explore</button>
+      </div>
+    </div>
+  </div>
+  

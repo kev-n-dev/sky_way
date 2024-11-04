@@ -1,0 +1,14 @@
+.city-cards-container {
+    display: flex;
+    justify-content: space-around; /* Adjust spacing as needed */
+    flex-wrap: wrap; /* Allows wrapping if the screen is narrow */
+     gap: 10px;
+
+   width: 80%!important;
+   margin: auto;
+   padding: 20px;
+  }
+  
+  app-destination-card {
+    margin: 10px; /* Optional: Add margin to each card */
+  }
