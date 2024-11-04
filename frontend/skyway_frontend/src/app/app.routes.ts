@@ -10,7 +10,7 @@ import { PassengerListComponent } from './passengers-list/passengers-list.compon
 
 export const routes: Routes  = [
     { path: 'passenger-info', component: PassengerInfoComponent },
-    { path: 'summary', component: SummaryComponent },
+    { path: 'payment/summary/:bookingId', component: SummaryComponent },
     { path: 'success', component: SuccessComponent },
     { path: 'flight-search', component: FlightSearchComponent },
     { path: 'my-trips', component: MyTripsComponent },

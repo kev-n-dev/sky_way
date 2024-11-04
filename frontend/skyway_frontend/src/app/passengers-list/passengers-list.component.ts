@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
- 
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-passenger-list',
   standalone: true,
@@ -17,10 +17,15 @@ export class PassengerListComponent implements OnInit {
   passengerForm: FormGroup;
   selectedTab: number = 0;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
     this.passengerForm = this.fb.group({
       passengers: this.fb.array([]) 
     });
+  }
+
+ 
+  navigateToPaymentSummary(bookingId: string ) {
+    this.router.navigate(['/payment/summary',bookingId]);
   }
 
   ngOnInit(): void {
@@ -55,7 +60,17 @@ export class PassengerListComponent implements OnInit {
 
   onSubmit(): void {
     if (this.isFormValid()) {
+      let successful = true
       console.log('Data Submitted:', { passengers: this.passengerForm.value.passengers, flightId: this.flightId });
+
+      if (successful == true){
+
+        // got id 
+        let bookingId = "123413412231234"
+        this.passengerForm.reset();
+        this.selectedTab = 0;
+        this.navigateToPaymentSummary(bookingId)
+      }
     }
   }
 }
