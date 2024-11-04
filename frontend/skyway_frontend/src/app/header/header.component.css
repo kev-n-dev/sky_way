@@ -1,0 +1,57 @@
+.header {
+    display: flex;
+
+
+  justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+
+     min-width: 390px;
+
+}
+
+  .logoText {
+    color: #dc2626;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px; /* Adds space between links */
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #4b5563;
+    margin-left: auto; /* Pushes the nav links to the far right */
+  }
+
+  .nav-links a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  /* Optional: Add hover effect for navigation links */
+  .nav-links a:hover {
+    color: #dc2626;
+
+  }
+
+  .input{
+
+    position: absolute;
+    display: flex;
+    color: #9ca3af;
+    font-size: 16px;
+    font-family: Inter;
+    letter-spacing: 0%;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: left;
+    text-wrap: nowrap;
+    width: 92px;
+    height: 19px;
+  }
