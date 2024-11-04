@@ -1,0 +1,104 @@
+.flightCard {
+    width: 80vw;
+    font-family: 'Inter', sans-serif;
+    height: 12vh;
+     border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Internal padding */
+    margin: 10px; /* External margin */
+    background-color: #fff; /* Card background color */
+}
+
+.flightCard:hover{
+    box-shadow: 0 2px 8px #4b556364;
+
+}
+
+.container {
+    display: flex; /* Enable Flexbox for the container */
+    flex-direction: column; /* Arrange items vertically */
+}
+
+.row {
+    display: flex; /* Enable Flexbox for each row */
+    justify-content: space-between; /* Space items evenly */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 0px; /* Space between rows */
+}
+
+.departure-arrival {
+    padding-left: 1vw;
+    padding-bottom: 0;
+
+    font-size: 1.2em; /* Font size for departure and arrival times */
+    color: #333; /* Text color */
+    font-weight: bold;
+    flex: 1; /* Allow this item to take up available space */
+}
+
+.cost {
+    padding-right: 1vw;
+    padding-bottom: 0;
+    font-size: 1.2em; /* Font size for cost */
+    margin-left: 10px; /* Space between departure/arrival and cost */
+    font-weight: bold;
+}
+
+.cities {
+    padding: 1vw;
+    padding-left: 1vw;
+    padding-top: 0;
+    font-size: 1em; /* Font size for cities */
+    color: #4B5563;
+    flex: 1; /* Allow this item to take up available space */
+}
+
+.duration {
+    padding-right: 1vw;
+    padding-top: 0;
+    font-size: 1em; /* Font size for duration */
+    color: #4B5563;
+    margin-left: 10px; /* Space between cities and duration */
+}
+
+button {
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for the button */
+    padding: 10px; /* Internal padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Make button full width */
+    font-size: 1em; /* Font size for button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: white !important; /* White background on hover */
+    color: #dc2626 !important; /* Red text color on hover */
+    border: 2px solid #dc2626; /* Red border on hover */
+}
+
+
+
+.price {
+    font-size: 1.2em;
+    color: #dc2626;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 200;
+  }
+
+  button {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+
+  }
+
+
+p{
+    margin: 2px!important;
+
+}
