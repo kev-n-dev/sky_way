@@ -1,0 +1,36 @@
+
+/* Sticky header styling */
+app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures it stays on top of other content */
+   }
+  
+  /* Main container styling */
+  .main {
+    display: flex;
+     justify-content: center;
+    padding: 20px;
+
+    min-height: 100vh;
+  }
+  
+  /* Content wrapper styling */
+  .content {
+     padding: 20px;
+      border-radius: 8px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .content {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content {
+      padding: 10px;
+    }
+  }
+  
