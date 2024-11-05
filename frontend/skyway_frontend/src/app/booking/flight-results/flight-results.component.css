@@ -1,0 +1,127 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.flightResultHeader {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.filter_bar{
+    width: 80vw;
+    font-family: 'Inter', sans-serif;
+    height: 12vh;
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Internal padding */
+    margin: 10px; /* External margin */
+    background-color: #fff; /* Card background color */
+  }
+  .filter-buttons  {
+    display: flex;
+  }
+
+  .flights-cards-container {
+    position: relative; /* Make the parent relative for absolute positioning within it */
+  }
+
+
+  .filter-buttons button {
+    background-color: white!important;
+    width: 420px;
+    height: 40px!important;
+    border: 2px solid #D1D5DB; /* Red border on hover */
+    color: #4B5563;
+    flex: 1; /* Make each button take equal space */
+    margin: 0 5px; /* Optional: spacing between buttons */
+    padding: 10px; /* Adjust button padding */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+.changeButton {
+  float: right;
+  padding: 0.5vw 1vw;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  width: 120px;
+  height: 40px;
+  background-color: white; /* White background on hover */
+  color: #dc2626; /* Red text color on hover */
+  border: 2px solid #dc2626; /* Red border on hover */
+}
+
+  .changeButton:hover{
+    background-color: #dc2626 !important; /* White background on hover */
+    color: white !important; /* Red text color on hover */
+    border: 2px solid #dc2626; /* Red border on hover */
+  }
+
+  button:hover {
+    background-color: white !important; /* White background on hover */
+    color: #dc2626 !important; /* Red text color on hover */
+    border: 2px solid #dc2626; /* Red border on hover */
+  }
+
+  .city {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .description {
+    color: #757575;
+    font-size: 14px;
+    margin: 10px 0;
+    white-space: nowrap; /* Prevents text from wrapping */
+  }
+
+  .no-flights-message {
+    text-align: center; /* Center the text */
+    margin: 20px; /* Add some margin around the message */
+    font-family: Arial, sans-serif; /* Font styling */
+  }
+
+  .no-flights-message h2 {
+    font-size: 2em; /* Larger font size for the title */
+    color: #333; /* Darker color for the title */
+  }
+
+  .no-flights-message p {
+    font-size: 1.2em; /* Slightly larger font size for the message */
+    color: #666; /* Gray color for the message text */
+  }
+
+
+
+  .filterButton{
+    background-color: white; /* White background on hover */
+    float: right;
+    padding: 0.5vw 1vw;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border: 2px solid #D1D5DB
+  }
+
+  .loadMoreButton {
+    padding: 0.5vw 1vw;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+    /* Center the button */
+    display: block;
+    margin: 0 auto; /* Horizontally centers it */
+
+}

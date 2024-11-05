@@ -1,0 +1,42 @@
+<div class="flights-cards-container">
+  <h3 class=" flightResultHeader" >Flight Results: <span><button (click)="navigateToHome()" class="filterButton">Filter</button></span></h3> 
+       
+
+  <div class="filter_bar">
+    <div>
+      <button (click)="navigateToHome()" class="changeButton">Change</button>
+
+      <p class="city">{{ searched.from }} to {{ searched.to }}</p>
+      <p>{{ searched.departure_date }} | {{ searched.guests }} guests</p>
+     </div>
+
+    <div class="filter-buttons">
+      <button (click)="filterBy('cheapest')">Cheapest</button>
+      <button (click)="filterBy('fastest')">Fastest</button>
+      <button (click)="filterBy('bestValue')">Best Value</button>
+    </div>
+  </div>
+
+  <!-- Conditionally display "No flights found" if filteredFlights is empty -->
+  <div *ngIf="filteredFlights.length === 0" class="no-flights-message">
+    <p>No flights found for the selected criteria.</p>
+  </div>
+
+  <!-- Display flight cards if flights are found -->
+  <div *ngIf="filteredFlights.length > 0">
+    <app-flight-card
+      *ngFor="let flight of filteredFlights"
+      [flight_id]="flight.id"
+      [departure_city]="flight.departure_city"
+      [destination_city]="flight.destination_city"
+      [take_off_time]="flight.take_off_time"
+      [landing_time]="flight.landing_time"
+      [cost]="flight.cost"
+      [duration]="flight.duration"
+      [guests]="searched.guests" 
+      ></app-flight-card>
+  </div>
+
+  <button (click)="navigateToHome()" class="loadMoreButton">Load More Results</button>
+
+</div>
