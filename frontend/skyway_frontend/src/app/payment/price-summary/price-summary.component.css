@@ -1,0 +1,15 @@
+.price-summary {
+   max-width: 250px;
+  margin: 20px auto;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 1.2em;
+}
