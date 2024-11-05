@@ -1,0 +1,191 @@
+* {
+  font-size: 14px !important;
+  font-family: 'Inter', sans-serif;
+
+}
+
+ 
+ 
+
+label {
+  display: block;
+  /* Ensures each label takes up its own line */
+  margin-bottom: 5px;
+  /* Space between label and input */
+  font-size: 12px;
+  /* Smaller font size for labels */
+  color: #555;
+  /* Slightly darker color for better readability */
+}
+
+
+
+button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+
+}
+
+
+p {
+  margin: 2px !important;
+
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+
+
+
+
+
+
+
+ 
+
+input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+
+ 
+
+input:focus {
+  border-color: #dc2626;
+  /* Change border color on focus */
+  outline: none;
+  /* Remove default outline */
+}
+
+ 
+ 
+ 
+ 
+.input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+.input:disabled {
+  background-color: #f0f0f0;
+  /* Light gray background */
+  color: #a9a9a9;
+  /* Gray text color */
+  cursor: not-allowed;
+  /* Change cursor to indicate it's not clickable */
+  opacity: 0.6;
+  /* Slightly transparent to show it's disabled */
+  border: 1px solid #ccc;
+  /* Border color for disabled state */
+}
+
+input:focus {
+  outline: 2px solid #dc2626 !important;
+  /* Red outline when input is focused */
+  box-shadow: none;
+  /* Remove default focus shadow if needed */
+}
+
+ 
+
+
+
+
+
+.input-group {
+  flex: 1; /* Allow the input group to grow evenly */
+  margin: 10px; /* Space around input groups */
+}
+
+.input-row {
+  display: flex; /* Use flexbox for the layout */
+  justify-content: space-between; /* Space out the items evenly */
+   gap: 20px; /* Add gap between child elements */
+}
+
+.input {
+  width: 100%; /* Make input fields take full width of the container */
+  padding: 12px !important; /* Consistent padding */
+  border: 1px solid #d1d5db; /* Consistent border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+label {
+  display: block; /* Ensure labels take their own line */
+  margin-bottom: 5px; /* Space between label and input */
+  font-size: 12px; /* Smaller font size for labels */
+  color: #555; /* Slightly darker color for better readability */
+}
+
+.input-container {
+   display: flex; /* Use flexbox for the layout */
+  flex-direction: column; /* Stack input rows vertically */
+  max-width: 50vw;
+}
+
+.paymentForm {
+  gap: 10px; /* Space between inputs */
+}
+
+
+.submitButton{
+  position: relative;
+ }
+
+
+ * {
+  font-size: 14px !important;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+}
+
+.secure_message{
+  text-align: center;
+  font-size: 12px!important;
+  color: #6f7d91!important;
+}
+
+.summaryPage{
+  width: 80vw;
+}
+
+.booking-summary {
+  display: flex;                  /* Use Flexbox for layout */
+  justify-content: space-between; /* Even spacing between items */
+  align-items: stretch;          /* Ensure items stretch to the same height */
+  margin: 20px 20px;                /* Optional: add some margin around the booking summary */
+}
+
+.flight-details,
+.price-summary {
+  text-align: left!important;
+  flex: 1;                       /* Allow both components to grow equally */
+  max-width: 20vw;              /* Limit the maximum width for responsiveness */
+  line-height: 35px;
+  border-radius: 8px;           /* Optional: add rounded corners */
+  color: #4B5563;
+  display: flex;                /* Enable Flexbox for this container */
+  flex-direction: column;       /* Stack child elements vertically */
+  padding: 16px;                /* Optional: add some padding */
+}
+
+.submitButton {
+  margin-top: 20px;             /* Add spacing above the button */
+  width: 100%;                   /* Make the button full width or adjust as needed */
+  display: flex;                /* Use Flexbox for centering the button */
+  justify-content: center;      /* Center the button horizontally */
+}
+
+ 
+button:disabled {
+  background-color: #ccc;       /* Color for disabled button */
+  cursor: not-allowed;          /* Change cursor for disabled state */
+}

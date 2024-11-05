@@ -10,7 +10,19 @@
      min-width: 390px;
 
 }
+/* print-styles.css */
+@media print {
+  /* Hide elements that shouldn't be printed */
+  .no-print {
+    display: none;
+  }
 
+  .logo{
+    position: absolute;
+    left:  45vw;
+    justify-content: center!important;
+  }
+}
   .logoText {
     color: #dc2626;
     font-size: 24px;

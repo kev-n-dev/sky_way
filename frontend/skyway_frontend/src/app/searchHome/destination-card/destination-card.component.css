@@ -13,7 +13,7 @@
     border-radius: 5px;
     overflow: hidden;
     max-width: 320px;
-    height: 40vh;
+    min-height: fit-content;
   }
   
   .card:hover {

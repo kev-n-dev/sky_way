@@ -1,0 +1,55 @@
+<form class="paymentForm" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="booking-summary">
+        <div class="flight-details">
+            <app-flight-details [from]="'dasda'" [to]="'to'"></app-flight-details>
+        </div>
+        <div class="price-summary">
+            <app-price-summary></app-price-summary>
+            <div class="submitButton">
+                <button type="submit" [disabled]="paymentForm.invalid">Submit Payment</button>
+            </div>
+            <p class="secure_message">Secure payment processed by Stripe</p>
+ 
+        </div>
+    </div>
+
+    <div class="input-container">
+        <div class="input-row">
+            <!-- Card Number -->
+            <div class="input-group">
+                <label for="cardNumber">Card Number</label>
+                <input id="cardNumber" type="text" formControlName="cardNumber" class="input" />
+            </div>
+        </div>
+
+        <div class="input-row">
+            <div class="input-group">
+                <!-- Expiration Date -->
+                <label for="expirationDate">Expiry Date</label>
+                <input id="expirationDate" type="text" formControlName="expirationDate" placeholder="MM/YY"
+                    class="input" />
+            </div>
+
+            <div class="input-group">
+                <!-- CVV -->
+                <label for="cvv">CVV</label>
+                <input id="cvv" type="text" formControlName="cvv" class="input" />
+            </div>
+        </div>
+
+        <div class="input-row">
+            <!-- Cardholder Name -->
+            <div class="input-group">
+                <label for="cardholderName">Cardholder Name</label>
+                <input id="cardholderName" type="text" formControlName="cardholderName" class="input" />
+            </div>
+        </div>
+        <div class="input-row">
+
+        </div>
+
+    </div>
+
+
+
+</form>
