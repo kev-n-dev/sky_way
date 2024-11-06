@@ -18,4 +18,5 @@ tmp/
 # Ignore all .log files
 *.log
 
-/backend/static/
+backend/static
+/backend/static/skyway_frontend/server
