@@ -19,4 +19,4 @@ tmp/
 *.log
 
 backend/static
-/backend/static/skyway_frontend/server
+/backend/static/**
