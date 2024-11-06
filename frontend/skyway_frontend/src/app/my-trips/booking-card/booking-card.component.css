@@ -1,0 +1,34 @@
+.booking-card {
+    width: 80vw;
+    display: flex;
+    flex: 1;
+
+     border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.2em;
+    color: #dc2626;
+  }
+  
+  .booking-card p {
+    margin: 4px 0;
+    color: #333;
+  }
+
+  
+ 
+ 
+.plane {
+    position: relative;
+    right: 0;
+    margin: auto;
+  
+    width: 80px; /* Set a width to scale the SVG */
+    height: auto; /* Maintain aspect ratio */
+}

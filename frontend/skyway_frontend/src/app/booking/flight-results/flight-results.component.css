@@ -22,6 +22,7 @@
 
   .flights-cards-container {
     position: relative; /* Make the parent relative for absolute positioning within it */
+    padding-bottom: 5vh;
   }
 
 

@@ -8,10 +8,7 @@
     background-color: #fff; /* Card background color */
 }
 
-.flightCard:hover{
-    box-shadow: 0 2px 8px #4b556364;
 
-}
 
 .container {
     display: flex; /* Enable Flexbox for the container */

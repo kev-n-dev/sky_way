@@ -225,6 +225,6 @@ export class FlightResultsComponent implements OnInit {
  
 
   navigateToHome() {
-    this.router.navigate(['home']); // Navigate with query parameters
+    this.router.navigate(['sw/home']); // Navigate with query parameters
   }
 }

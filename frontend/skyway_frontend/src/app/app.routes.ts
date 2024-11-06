@@ -7,18 +7,20 @@ import { HomePageComponent } from './searchHome/home-page/home-page.component';
 import { FlightResultsComponent } from './booking/flight-results/flight-results.component';
 import { PassengerListComponent } from './booking/passengers-list/passengers-list.component';
 import { SummaryAndPaymentComponent } from './payment/summary-and-payment/summary-and-payment.component';
+import { SearchPageComponent } from './searchHome/search-page/search-page.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes  = [
-    { path: 'passenger-info', component: PassengerInfoComponent },
-    { path: 'payment/summary/:bookingId', component: SummaryAndPaymentComponent },
-    { path: 'flight-search', component: FlightSearchComponent },
-    { path: 'my-trips', component: MyTripsComponent },
-    { path: 'home', component: HomePageComponent },
-    { path: 'explore', component: FlightResultsComponent },
-    { path: 'booking/confirmation/:bookingId', component: SuccessComponent },
-    { path: 'booking/:flightId/:guests', component: PassengerListComponent },
-
-     { path: '', redirectTo: '/home', pathMatch: 'full' } // Default route
+    { path: 'sw/login', component: LoginComponent }, // Add the login route here
+    { path: 'sw/home', component: HomePageComponent },
+    { path: 'sw/passenger-info', component: PassengerInfoComponent },
+    { path: 'sw/payment/summary/:bookingId', component: SummaryAndPaymentComponent },
+    { path: 'sw/flight-search', component: SearchPageComponent },
+    { path: 'sw/my-trips', component: MyTripsComponent },
+    { path: 'sw/explore', component: FlightResultsComponent },
+    { path: 'sw/booking/confirmation/:bookingId', component: SuccessComponent },
+    { path: 'sw/booking/:flightId/:guests', component: PassengerListComponent },
+     { path: '', redirectTo: 'sw/login', pathMatch: 'full' } // Default route
   ];
 
 

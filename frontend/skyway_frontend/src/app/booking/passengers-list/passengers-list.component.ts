@@ -25,7 +25,7 @@ export class PassengerListComponent implements OnInit {
 
  
   navigateToPaymentSummary(bookingId: string ) {
-    this.router.navigate(['/payment/summary',bookingId]);
+    this.router.navigate(['/sw/payment/summary',bookingId]);
   }
 
   ngOnInit(): void {

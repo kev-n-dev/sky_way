@@ -36,6 +36,22 @@ export class FlightSearchComponent {
 
     console.log(queryParams)
     // Navigate to the search page with the constructed search link
-    this.router.navigate(['explore'], { queryParams }); // Navigate with query parameters
+    this.router.navigate(['sw/explore'], { queryParams }); // Navigate with query parameters
+  }
+
+
+
+  navigateToResent() {
+    // Get form values
+ 
+    
+    const queryParams = {
+      resent: true,
+    };
+ 
+
+    console.log(queryParams)
+    // Navigate to the search page with the constructed search link
+    this.router.navigate(['sw/explore'], { queryParams }); // Navigate with query parameters
   }
 }

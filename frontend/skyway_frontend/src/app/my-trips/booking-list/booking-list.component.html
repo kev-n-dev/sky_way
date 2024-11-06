@@ -1,0 +1,20 @@
+<div class="flights-cards-container">
+ 
+  
+    <!-- Conditionally display "No flights found" if filteredFlights is empty -->
+    <div *ngIf="bookings.length === 0" class="no-flights-message">
+        <p>You haven’t booked a trip with us yet! Let’s get started on planning your first adventure.</p>
+        <button (click)="navigateToHome()" class="searchFlights">Search Destinations</button>
+    </div>
+  
+    <!-- Display flight cards if flights are found -->
+    <div *ngIf="bookings.length > 0">
+      <app-booking-card
+        *ngFor="let bking of bookings"
+        [booking]="bking"
+        ></app-booking-card>
+    </div>
+  
+   
+  </div>
+  

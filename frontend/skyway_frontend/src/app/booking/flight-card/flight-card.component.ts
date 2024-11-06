@@ -21,7 +21,7 @@ export class FlightCardComponent {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   navigateToPassengerList(guestsCount: string | number) {
-    this.router.navigate(['/booking',this.flight_id, guestsCount]);
+    this.router.navigate(['/sw/booking',this.flight_id, guestsCount]);
   }
  
   // Method to format take-off time

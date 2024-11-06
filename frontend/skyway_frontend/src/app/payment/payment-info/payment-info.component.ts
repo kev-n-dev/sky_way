@@ -49,7 +49,7 @@ export class PaymentInfoComponent implements OnInit {
   navigateToConfirmation() {
     if (this.bookingId) {
       console.log("Navigating to confirmation with booking ID:", this.bookingId);
-      this.router.navigate(['/booking/confirmation', this.bookingId]);
+      this.router.navigate(['/sw/booking/confirmation', this.bookingId]);
     } else {
       console.error("Booking ID is not defined!");
     }

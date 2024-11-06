@@ -1,0 +1,106 @@
+.auth-container {
+    min-width: 400px;
+     background-color: white;
+     padding: 2vw;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;                  /* Ensure it's above the dark overlay */
+
+align-items: center!important;
+}
+
+ 
+.auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.login_screen {
+    font-family: 'Inter', sans-serif;
+
+    display: flex;               /* Enable Flexbox */
+    flex-direction: column;      /* Arrange items vertically */
+    justify-content: center;     /* Center content vertically */
+    align-items: center;         /* Center content horizontally */
+    height: 100%;               /* Full viewport height */
+    width: 100vw;                /* Full viewport width */
+    background-image: url('/assets/skywayBg.png');
+    background-size:cover; /* Cover the entire area */
+    background-repeat: no-repeat;/* Prevent repeating the background */
+    position: relative;          /* For positioning the overlay */
+}
+
+ 
+.login_screen::before {
+    content: ''; /* Create a pseudo-element */
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+    z-index: 1; /* Overlay is above the background */
+}
+
+.welcome {
+    z-index: 1; /* Overlay is above the background */
+
+    margin-bottom: 20px;         /* Space between welcome message and auth container */
+    text-align: center;          /* Center text inside the welcome div */
+    color: white;                /* Optional: to make it stand out on the background */
+    font-size: 2rem;             /* Optional: adjust the size of the welcome text */
+}
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 30vw!important;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #dc2626;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #aaa;
+  }
+  
+  small, .skyway{
+    color: #dc2626;
+  }
+  
+
+
+  .loginForm, .signupForm{
+    padding: 10px;
+  }
+
+
+  

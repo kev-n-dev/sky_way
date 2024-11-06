@@ -6,18 +6,22 @@ app-header {
     z-index: 1000; /* Ensures it stays on top of other content */
    }
   
+
+   
   /* Main container styling */
   .main {
     display: flex;
      justify-content: center;
-    padding: 20px;
-
+    padding: 0px;
     min-height: 100vh;
   }
+
+
+
   
   /* Content wrapper styling */
   .content {
-     padding: 20px;
+     padding: 0px;
       border-radius: 8px;
   }
   
