@@ -17,7 +17,7 @@ setup-venv:
 
 install:
 	@echo "Installing Flask and dependencies..."
-	@venv/bin/pip install Flask Flask-SQLAlchemy
+	@venv/bin/pip install -r requirements.txt
 	@echo "Checking if Angular CLI is installed..."
 	@if ! command -v ng &> /dev/null; then \
 		echo "Angular CLI not found. Installing Angular CLI..."; \
@@ -31,12 +31,16 @@ install:
 	mkdir -p $(STATIC_DIR)
 	cp -r $(ANGULAR_PROJECT_DIR)/dist/skyway_frontend/* $(STATIC_DIR)/
 	@echo "finished copying"
+ 
+setup:
+	docker-compose up -d redis rds
 
 
 serve:
 	@echo "Starting Flask server..."  # Print a message indicating the start of the Flask server
 	@echo "Looking for app directory: $(FLASK_APP_DIR)"
-	FLASK_APP=$(FLASK_APP_DIR)/app.py venv/bin/flask run  # Run Flask directly from the virtual environment
+	@echo "Waiting for the database to start..."
+	@FLASK_APP=$(FLASK_APP_DIR)/app.py venv/bin/flask run  # Run Flask directly from the virtual environment
 
 clean:
 	@echo "Cleaning up..."
