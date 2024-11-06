@@ -1,0 +1,22 @@
+# Ignore Python virtual environments
+venv/
+
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore environment variable files
+.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore all files in a specific directory (e.g., logs or temporary files)
+logs/
+tmp/
+
+# Ignore all .log files
+*.log
+
+sky_way/backend/static
+
