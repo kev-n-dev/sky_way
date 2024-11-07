@@ -1,17 +1,25 @@
 <div class="price-summary">
-    <h2>Price Summary</h2>
-    <div class="summary-row">
-      <span>Base Fee:</span>
-      <span>${{ baseFee.toFixed(2) }}</span>
-    </div>
-    <div class="summary-row">
-      <span>Taxes:</span>
-      <span>${{ taxes.toFixed(2) }}</span>
-    </div>
-    <hr>
-    <div class="summary-row total">
-      <strong><span>Total:</span></strong>
-      <strong><span>${{ total.toFixed(2) }}</span></strong>
-    </div>
+  <h2>Price Summary</h2>
+  
+  <div class="summary-row">
+    <span>Initial Flight Fee:</span>
+    <span>{{ baseFee  }}</span>
+  </div>
+
+  <div *ngIf="baseFee" class="summary-row">
+    <span>Return Flight Fee:</span>
+    <span>{{ ReturnBaseFee }}</span>
+  </div>
+
+  <div class="summary-row">
+    <span>Taxes:</span>
+    <span>${{ taxes }}</span>
   </div>
   
+  <hr>
+  
+  <div class="summary-row total">
+    <strong><span>Total:</span></strong>
+    <strong><span>${{ new_total.toFixed(2) }}</span></strong>
+  </div>
+</div>

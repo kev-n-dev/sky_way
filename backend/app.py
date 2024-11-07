@@ -13,6 +13,7 @@ jwt = JWTManager(app)
 app.config['JWT_SECRET_KEY'] = 'your-jwt-secret-key'
 app.config['SECRET_KEY'] = 'your-flask-secret-key'
 
+
 # Register the API blueprint with a prefix
 app.register_blueprint(bp, url_prefix='/api')
 

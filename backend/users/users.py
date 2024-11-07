@@ -1,13 +1,13 @@
 from datetime import datetime
 from sqlalchemy.orm.exc import NoResultFound
-
+from models import User
 # Handler to get a user by ID
 def get_user_by_id(user_id):
     """
     Get a user by their ID.
     """
     try:
-        user = User.query.filter_by(id=user_id, deleted_at=None).first()  # Exclude soft-deleted users
+        user = User.query.filter_by(id=user_id).first()  # Exclude soft-deleted users
         if user is None:
             return None  # Or raise an error if you prefer
         return user
@@ -20,7 +20,7 @@ def get_user_by_email(email):
     Get a user by their email address.
     """
     try:
-        user = User.query.filter_by(email=email, deleted_at=None).first()  # Exclude soft-deleted users
+        user = User.query.filter_by(email=email).first()  # Exclude soft-deleted users
         if user is None:
             return None  # Or raise an error if you prefer
         return user

@@ -1,14 +1,14 @@
  <div class="flightCard">
     <div class="container">
         <div class="row">
-            <p class="departure-arrival">{{ getFormattedTakeOffTime(take_off_time) }} - {{ getFormattedTakeOffTime(landing_time) }} </p>
+            <p class="departure-arrival"> {{ take_off_time }} -  {{landing_time }} </p>
             <p class="cost">{{ cost }}</p>
 
         </div>
 
         <div class="row">
             <p class="cities">{{ departure_city }} - {{ destination_city }}</p>
-            <p class="duration">{{ duration }}</p>
+            <p class="duration">{{ duration }}H</p>
         </div>
 
 

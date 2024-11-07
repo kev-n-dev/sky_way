@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import QRCode from 'qrcode';
+import { Booking, BookingService,Flight} from '../../../services/booking.service';
+ import { ActivatedRoute ,Router } from '@angular/router';
 
 @Component({
   selector: 'app-success',
@@ -9,24 +11,40 @@ import QRCode from 'qrcode';
   templateUrl: './success.component.html',
   styleUrls: ['./success.component.css']
 })
-export class SuccessComponent {
-  @Input() bookingReferenceId!: string;
+export class SuccessComponent implements OnInit {
+  @Input() bookingId!: string;
   @Input() flightDetails!: { from: string; to: string; date: string; time: string };
   @Input() passengerList!: string[];
   qrCodeUrl!: string;
+  constructor(private route: ActivatedRoute, private router: Router, private bookingService: BookingService) {}
 
-  constructor() {
-    // Provide default values if needed
-    this.bookingReferenceId = 'Sky123456'; // Example default value
-    this.flightDetails = {
-      from: 'New York',
-      to: 'Los Angeles',
-      date: 'November 10, 2024',
-      time: '3:00 PM',
-    }; // Example default value
-    this.passengerList = ['John Doe', 'Jane Smith']; // Example default value
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.bookingId = params['bookingId'];
+    });
+
+    this.bookingService.viewBookings(null, this.bookingId).subscribe(
+      (response: Booking[]) => {
+        const booking = response[0];
+
+        console.log(booking)
+        // this.flightDetails = {
+        //   from: booking.departing_flight.arrival_airport.name,
+        //   to: booking.arrival_city,
+        //   date: booking.departing_flight.departure,
+        //   time: booking.departure_time,
+        // };
+        // this.passengerList = booking.passengers.map(passenger => passenger.first_name);
+      },
+      (error) => {
+        if (error.status === 401) {
+          this.router.navigate(['/sw/login']);
+        } else {
+          console.error('Error viewing booking:', error);
+        }
+      }
+    );
   }
-
 
   ngAfterViewInit() {
     this.generateQRCode();
@@ -34,7 +52,7 @@ export class SuccessComponent {
 
   async generateQRCode() {
     try {
-      this.qrCodeUrl = await QRCode.toDataURL(this.bookingReferenceId, { errorCorrectionLevel: 'H' });
+      this.qrCodeUrl = await QRCode.toDataURL(this.bookingId, { errorCorrectionLevel: 'H' });
     } catch (error) {
       console.error('Error generating QR Code:', error);
     }

@@ -16,14 +16,14 @@ export class FeaturedDestinationsComponent {
       description: 'Experience the city that never sleeps',
       price: '299',
       imageUrl: '/assets/ny.jpg',
-      searchLink: 'sw/explore?to=New York, NY',
+      searchLink: 'sw/explore?to=JFK',
     },
     {
       cityName: 'Paris',
       description: 'Embrace the city of love and lights',
       price: '399',
       imageUrl: 'assets/paris.avif',
-      searchLink: 'sw/explore?to=Paris, Fr',
+      searchLink: 'sw/explore?to=CDG',
 
     },
     {
@@ -31,7 +31,7 @@ export class FeaturedDestinationsComponent {
       description: 'Discover the blend of tradition and future',
       price: '499',
       imageUrl: 'assets/tokyo.jpg',
-      searchLink: 'sw/explore?to=Tokyo, Jp',
+      searchLink: 'sw/explore?to=NRT',
     }
     // Add more city objects as needed
   ];

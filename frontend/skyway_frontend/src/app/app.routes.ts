@@ -19,7 +19,7 @@ export const routes: Routes  = [
     { path: 'sw/my-trips', component: MyTripsComponent },
     { path: 'sw/explore', component: FlightResultsComponent },
     { path: 'sw/booking/confirmation/:bookingId', component: SuccessComponent },
-    { path: 'sw/booking/:flightId/:guests', component: PassengerListComponent },
+    { path: 'sw/booking/flight/:flightId/:guests', component: PassengerListComponent },
      { path: '', redirectTo: 'sw/login', pathMatch: 'full' } // Default route
   ];
 
