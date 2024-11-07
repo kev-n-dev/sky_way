@@ -135,4 +135,4 @@ curl -X GET "http://127.0.0.1:5000/search_flights?from=New%20York&to=Los%20Angel
 
 ## License
 This project is licensed under the [Proprietary License](LICENSE).
-You may not use this software for commercial purposes without explicit permission from the author.ild step and keeps the rest intact. Let me know if you'd like any further adjustments!
+You may not use this software for commercial purposes without explicit permission from the author. 
