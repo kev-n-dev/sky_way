@@ -31,10 +31,6 @@ install:
 	mkdir -p $(STATIC_DIR)
 	cp -r $(ANGULAR_PROJECT_DIR)/dist/skyway_frontend/* $(STATIC_DIR)/
 	@echo "finished copying"
- 
-setup:
-	docker-compose up -d redis rds
-
 
 serve:
 	@echo "Starting Flask server..."  # Print a message indicating the start of the Flask server
