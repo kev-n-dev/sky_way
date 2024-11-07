@@ -27,16 +27,19 @@
     <app-flight-card
       *ngFor="let flight of filteredFlights"
       [flight_id]="flight.id"
-      [departure_city]="flight.departure_city"
-      [destination_city]="flight.destination_city"
-      [take_off_time]="flight.take_off_time"
-      [landing_time]="flight.landing_time"
+      [departure_city]="flight.departure_airport.name"
+      [destination_city]="flight.arrival_airport.name"
+      [take_off_time]="flight.departure_time"
+      [departure_day]="flight.start_date"
+      [arrival_day]="flight.end_date"
+      [landing_time]="flight.arrival_time"
       [cost]="flight.cost"
       [duration]="flight.duration"
       [guests]="searched.guests" 
+      [return_date]="return_date"
       ></app-flight-card>
   </div>
 
-  <button (click)="navigateToHome()" class="loadMoreButton">Load More Results</button>
+  <!-- <button (click)="navigateToHome()" class="loadMoreButton">Load More Results</button> -->
 
 </div>

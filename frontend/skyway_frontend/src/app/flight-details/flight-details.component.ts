@@ -12,4 +12,6 @@ export class FlightDetailsComponent {
   @Input() to: string = ''; // Default value if not provided
   @Input() date: string = ''; // Default value if not provided
   @Input() passengers: number = 1; // Default value if not provided
+   
+
 }

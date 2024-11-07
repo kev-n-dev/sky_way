@@ -1,73 +1,52 @@
+<form class="search-form" [formGroup]="flightSearchForm" (ngSubmit)="navigateToSearchRes()">
+  <div class="input-container">
+    <div class="input-row">
+      <div id="flight-type" class="button-group">
+        <button type="button" class="button" [ngClass]="{'active': selectedOption === 'Roundtrip'}" (click)="selectOption('Roundtrip')">
+          Roundtrip
+        </button>
+        <button type="button" class="button" [ngClass]="{'active': selectedOption === 'One Way'}" (click)="selectOption('One Way')">
+          One Way
+        </button>
+        <button type="button" class="button recentButton" (click)="navigateToResent()">Recent Searches</button>
+      </div>
+    </div>
 
-<form class="search-form"   #searchForm="ngForm" (ngSubmit)="navigateToSearchRes(searchForm)">
-
-    <div class="input-container">
+    <div class="input-row" style="  display: flex;
+    justify-content: space-between;
+    margin: 10px;">
+      <div class="custom-wrapper-example" matAutocompleteOrigin #originFrom="matAutocompleteOrigin" style="flex: 1; padding: 0;">
+        <input id="from" style=" flex: 1;
+        margin: 0 10px;
+        padding: 10px;
+        width: 97%;
+        box-sizing: border-box;" [matAutocomplete]="autoFrom" [matAutocompleteConnectedTo]="originFrom" matInput formControlName="from"
+          type="text" class="input" placeholder="From" required />
+        <mat-autocomplete #autoFrom="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option.name">[{{ option.code }}] {{ option.name }} </mat-option>
+        </mat-autocomplete>
+      </div>
+      
+      <div class="custom-wrapper-example" matAutocompleteOrigin #originTo="matAutocompleteOrigin" style="flex: 1; padding: 0;">
+        <input id="to" style=" flex: 1;
+        margin: 0 10px; width: 96%;
+        padding: 10px;
+        box-sizing: border-box;" [matAutocomplete]="autoTo" [matAutocompleteConnectedTo]="originTo" matInput formControlName="to"
+          type="text" class="input" placeholder="To" required />
+        <mat-autocomplete #autoTo="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option.name">[{{ option.code }}] {{ option.name }} 
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+    </div>
+    
+    
 
     <div class="input-row">
-
-        <div id="flight-type" class="button-group">
-            <button
-            type="button"
-              class="button"
-              [ngClass]="{'active': selectedOption === 'Roundtrip'}"
-              (click)="selectOption('Roundtrip')">
-              Roundtrip
-            </button>
-            <button
-            type="button"
-              class="button "
-              [ngClass]="{'active': selectedOption === 'One Way'}"
-              (click)="selectOption('One Way')">
-              One Way
-            </button>
-            <button
-            type="button"
-              class="button recentButton"
-              (click)="navigateToResent()"
-                >
-              Recent Searches
-            </button>
-          </div>
-
+      <input formControlName="guests" type="number" min="1" class="input" placeholder="1 Guest" required />
+      <input formControlName="depart" type="text" class="input" placeholder="Depart Date" onfocus="(this.type='date')" onblur="(this.type='text')" required />
+      <input formControlName="return" type="text" class="input" placeholder="Return Date" onfocus="(this.type='date')" onblur="(this.type='text')" *ngIf="selectedOption === 'Roundtrip'" required />
+      <button type="submit" class="search-button">Search</button>
     </div>
-
-    <!-- <app-airport-search> </app-airport-search> -->
-
-      <div class="input-row">
-        <input id="from" name="from" type="text" class="input" placeholder="From" required ngModel />
-
-        <input id="to" name="to" type="text" class="input" placeholder="To" required ngModel />
-      </div>
-
-      <div class="input-row">
-        <input id="guests" name="guests" type="number" min="1" class="input" placeholder="1 Guest" required ngModel/>
-
-        <input
-        id="depart"
-        name="depart"
-        type="text"
-        class="input"
-        placeholder="Depart Date"
-        onfocus="(this.type='date')"
-        onblur="(this.type='text')"
-        required ngModel
-
-      />
-        <input
-        id="return"
-        name="return"
-        type="text"
-        class="input"
-        placeholder="Return Date"
-        onfocus="(this.type='date')"
-        onblur="(this.type='text')"
-        *ngIf="selectedOption === 'Roundtrip'"
-        required ngModel
-
-      />
-       <button type="submit"  class="search-button">Search</button>
-    </div>
-</div>
-
-
-  </form>
+  </div>
+</form>

@@ -42,13 +42,16 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginData.email, loginData.password).subscribe(
         (response) => {
           console.log('Login Successful', response);
-          const token = response.headers.get('Authorization'); // Extract the token from the headers
+  
+          // Get the token directly from the response body
+          const token = response.body?.access_token;  // Assuming the token is in the `access_token` field of the response body
+          
           if (token) {
-            const accessToken = token.split(' ')[1]; // Get the token part after "Bearer"
-            localStorage.setItem('token', accessToken); // Store the token in local storage
-            this.router.navigate(['/sw/home']); // Navigate to the home page
+            localStorage.setItem('token', token);  // Store the token in local storage
+            localStorage.setItem('Bearer', 'Bearer '+token);  // Store the bearer in local storage
+            this.router.navigate(['/sw/home']);  // Navigate to the home page
           } else {
-            console.error('Token not found in response headers');
+            console.error('Token not found in response body', response);
           }
         },
         (error) => {
@@ -66,7 +69,7 @@ export class LoginComponent implements OnInit {
       this.authService.register(registerData.name, registerData.email, registerData.password).subscribe(
         (response) => {
           console.log('Registration Successful', response);
-          this.router.navigate(['/sw/login']); // Navigate to the home page
+          this.switchMode()
         },
         (error) => {
           console.error('Registration failed', error);

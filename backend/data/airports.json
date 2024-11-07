@@ -9,15 +9,15 @@
     },
     {
         "code": "CCS",
-        "name": "Caracas, Sim\u00f3n Bol\u00edvar Int'l (CCS), Venezuela"
+        "name": "Caracas, Simón Bolívar Int'l (CCS), Venezuela"
     },
     {
         "code": "CUR",
-        "name": "Cura\u00e7ao, Cura\u00e7ao Int'l (CUR), Cura\u00e7ao"
+        "name": "Curaçao, Curaçao Int'l (CUR), Curaçao"
     },
     {
         "code": "CUR",
-        "name": "Cura\u00e7ao, Hato Int'l (CUR), Cura\u00e7ao"
+        "name": "Curaçao, Hato Int'l (CUR), Curaçao"
     },
     {
         "code": "DOM",
@@ -25,11 +25,11 @@
     },
     {
         "code": "EIS",
-        "name": "Tortola, T. B. Lettsome Int'l (EIS), Tortota, British Virgin Islands"
+        "name": "Tortola, T. B. Lettsome Int'l (EIS), Tortola, British Virgin Islands"
     },
     {
         "code": "FDF",
-        "name": "Fort de France, Martinique Aim\u00e9 C\u00e9saire Int\u2019l (FDF), Martinique"
+        "name": "Fort de France, Martinique Aimé Césaire Int’l (FDF), Martinique"
     },
     {
         "code": "FLL",
@@ -85,11 +85,11 @@
     },
     {
         "code": "PTP",
-        "name": "Pointe-\u00e0-Pitre, Pointe-\u00e0-Pitre Int\u2019l (PTP), Guadeloupe"
+        "name": "Pointe-à-Pitre, Pointe-à-Pitre Int’l (PTP), Guadeloupe"
     },
     {
         "code": "SJU",
-        "name": "San Juan, Luis Mu\u00f1oz Marin Int\u2019l (SJU), Puerto Rico"
+        "name": "San Juan, Luis Muñoz Marin Int’l (SJU), Puerto Rico"
     },
     {
         "code": "SKB",
@@ -114,5 +114,17 @@
     {
         "code": "YYZ",
         "name": "Toronto, Lester B. Pearson Int'l (YYZ), Canada"
+    },
+    {
+        "code": "CDG",
+        "name": "Paris, Charles de Gaulle Int'l (CDG), France"
+    },
+    {
+        "code": "NRT",
+        "name": "Tokyo, Narita Int'l (NRT), Japan"
+    },
+    {
+        "code": "JFK",
+        "name": "New York, John F. Kennedy Int'l (JFK), USA"
     }
 ]

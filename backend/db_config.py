@@ -22,7 +22,7 @@ def init_db(flask_app):
  
     db.init_app(flask_app)
     with flask_app.app_context():
-        db.drop_all()  # Drops all tables (use with caution)
+        # db.drop_all()  # Drops all tables (use with caution)
         db.create_all()  # This will create all tables defined by your models
         seed_data()  # Call the seed function to load data
 

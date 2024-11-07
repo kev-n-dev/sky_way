@@ -1,10 +1,16 @@
 # Function to get a list of all airports
+from models import Airport
+
 def get_all_airports():
     """
     Get a list of all airports in the system.
     """
-    airports = Airport.query.filter_by(deleted_at=None).all()  # Exclude soft-deleted airports
-    return airports
+    airports = Airport.query.all()  # Exclude soft-deleted airports
+    return [airport.to_dict() for airport in airports]
+
+def get_airport_by_id(id):
+    flight = Airport.query.filter_by(id=id).first()
+    return flight
 
 # Function to get the list of airports from all departing flights' arrival airport IDs
 def get_arrival_airports_for_departing_flights(departing_airport_id):
