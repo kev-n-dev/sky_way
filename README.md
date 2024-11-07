@@ -1,4 +1,6 @@
 
+---
+
 # SkyWay Project
 
 SkyWay is a web application using Angular for the frontend and Flask for the backend. The frontend is built and served as static files through Flask, allowing for client-side Angular routing and a backend API.
@@ -55,19 +57,7 @@ With the virtual environment active, install Flask and any other required Python
 make install
 ```
 
-### 4. Build the Angular Frontend
-
-Build the Angular project and copy the static files to the Flask `static` directory:
-
-```bash
-make build
-```
-
-This command will:
-- Build the Angular project using the `production` configuration.
-- Copy the built files into the Flask `static/skyway_frontend` directory.
-
-### 5. Serve the Application
+### 4. Serve the Application
 
 Run the Flask server with the following command:
 
@@ -77,7 +67,7 @@ make serve
 
 The server will start on `http://127.0.0.1:5000` and serve both the backend API and the Angular frontend.
 
-### 6. Cleaning Up
+### 5. Cleaning Up
 
 To remove all built static files:
 
@@ -85,12 +75,57 @@ To remove all built static files:
 make clean
 ```
 
-## Additional Information
+## Routes and JWT Authentication
 
-### Routes
+### Public Routes (No JWT Required)
+- **Login Route (`/login`)**  
+  Method: `POST`  
+  Description: Handles user login by validating email and password. Returns a JWT access token for successful login.
 
-- **`/api/*`**: Reserved for backend API routes.
-- **All other routes**: Served by the Angular frontend (uses Angular routing).
+- **Create User Route (`/register`)**  
+  Method: `POST`  
+  Description: Registers a new user with a name, email, and password.
+
+- **Airports Route (`/airports`)**  
+  Method: `GET`  
+  Description: Returns a list of all available airports.
+
+### Protected Routes (JWT Required)
+These routes require a valid JWT token to be included in the `Authorization` header as a Bearer token.
+
+- **Get User Route (`/get_user/<user_id>`)**  
+  Method: `GET`  
+  Description: Retrieves user details (first name, last name, gender, etc.).  
+  JWT: Required (access restricted to the logged-in user only).
+
+- **Search Flights Route (`/search_flights`)**  
+  Method: `GET`  
+  Description: Searches for flights based on provided criteria (departure city, arrival city, dates, etc.).  
+  JWT: Required.
+
+- **Create Booking Route (`/booking`)**  
+  Method: `POST`  
+  Description: Creates a new booking with departing flight, return date, and passengers.  
+  JWT: Required.
+
+- **View Bookings Route (`/booking`)**  
+  Method: `GET`  
+  Description: Views bookings based on email or reference number.  
+  JWT: Required.
+
+- **Pay for Booking Route (`/booking/confirmation`)**  
+  Method: `POST`  
+  Description: Processes payment for a booking.  
+  JWT: Required.
+
+### Example of Accessing Protected Routes
+
+To access the protected routes, include the JWT token in the `Authorization` header as a Bearer token. Here’s an example of how to make a request using `curl`:
+
+```bash
+curl -X GET "http://127.0.0.1:5000/search_flights?from=New%20York&to=Los%20Angeles" \
+-H "Authorization: Bearer <your_jwt_token>"
+```
 
 ### Common Issues
 
@@ -99,5 +134,5 @@ make clean
 - **404 Errors**: Verify that Angular build files are correctly placed in the `backend/static/skyway_frontend` directory.
 
 ## License
-
-This project is licensed under the MIT License.
+This project is licensed under the [Proprietary License](LICENSE).
+You may not use this software for commercial purposes without explicit permission from the author.ild step and keeps the rest intact. Let me know if you'd like any further adjustments!
