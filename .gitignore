@@ -20,4 +20,4 @@ tmp/
 
 backend/static
 /backend/static/**
-backend/instance/skyway_airlines_systems.db
+/backend/instance/skyway_airlines_systems.db
