@@ -84,11 +84,11 @@ export class PassengerListComponent implements OnInit {
       // Call createBooking from the BookingService
       this.bookingService.createBooking(bookingData).subscribe(
         (response) => {
-          console.log('Booking created:', response);
-          const reference_number = response.reference_number;  // Assuming the response contains the booking ID
+          console.log('Booking created ->:', response);
+          const booking_id = response.data.id;  // Assuming the response contains the booking ID
           this.passengerForm.reset();
           this.selectedTab = 0;
-          this.navigateToPaymentSummary(reference_number);
+          this.navigateToPaymentSummary(booking_id);
         },
         (error) => {
           if (error.status === 401) {

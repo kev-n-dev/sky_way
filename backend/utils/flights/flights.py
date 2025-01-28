@@ -84,7 +84,7 @@ def get_close_flights(destination_airport=None, departure_airport=None, departur
         return None, jsonify({"message": "No flights found close to the specified date."}), 404
 
 
-def get_all_flights(to=None, from_airport=None, start_date=None, end_date=None):
+def get_all_flights(to=None, from_airport=None, start_date=None, end_date=None, page=1, per_page=20):
     """
     Get a list of flights with optional filters.
     Filters are:
@@ -99,17 +99,19 @@ def get_all_flights(to=None, from_airport=None, start_date=None, end_date=None):
 
     # Filter by 'to' (arrival airport)
     if to:
-        arrival_airport = Airport.query.filter(Airport.code == to).first()
-        if not arrival_airport:
-            return []  # Return empty if no arrival airport found
-        query = query.filter(Flight.arrival_airport_id == arrival_airport.id)
+        if to != "ANY":
+            arrival_airport = Airport.query.filter(Airport.code == to).first()
+            if not arrival_airport:
+                return []  # Return empty if no arrival airport found
+            query = query.filter(Flight.arrival_airport_id == arrival_airport.id)
 
     # Filter by 'from_airport' (departure airport)
     if from_airport:
-        departure_airport = Airport.query.filter(Airport.code == from_airport).first()
-        if not departure_airport:
-            return []  # Return empty if no departure airport found
-        query = query.filter(Flight.departure_airport_id == departure_airport.id)
+        if from_airport != "ANY":
+            departure_airport = Airport.query.filter(Airport.code == from_airport).first()
+            if not departure_airport:
+                return []  # Return empty if no departure airport found
+            query = query.filter(Flight.departure_airport_id == departure_airport.id)
 
     # Filter by 'start_date' and 'end_date'
     if start_date:
@@ -118,8 +120,8 @@ def get_all_flights(to=None, from_airport=None, start_date=None, end_date=None):
         query = query.filter(Flight.start_date <= end_date)
 
     # Execute the query and return the result
-    flights = query.all()
-    return flights
+    paginated_flights = query.paginate(page=page, per_page=per_page, error_out=False)
+    return paginated_flights
 
 
 def get_recent_searches(user_id):

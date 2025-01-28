@@ -346,9 +346,9 @@ def create_booking():
         # If returning flights exist, select the first one as the return flight
         if returning_flights:
             returning_flight = returning_flights[0]
-            print("Found returning flight:", returning_flights)
+            current_app.logger.error("Found returning flight:", returning_flights)
         else:
-            print("No returning flight found, creating a new one.")
+            current_app.logger.debug("No returning flight found, creating a new one.")
             # Create a new return flight if no matching flights are found
 
             # Create a new Flight object for the return flight
@@ -369,13 +369,14 @@ def create_booking():
             # Add the new flight to the database session
             db.session.add(new_flight)
             db.session.commit()  # Commit to save the new flight to the database
+            db.session.refresh(new_flight)
             db.session.flush()  # Ensure the session is updated
 
             # Set the created return flight as the returning flight
             returning_flight = new_flight
 
     # Create the booking entry by calling the helper function
-    booking = create_booking_entry(
+    create_resp = create_booking_entry(
         owner_id=owner_id,  # The authenticated user as the owner of the booking
         departure_flight=departure_flight.id,  # Departure flight ID
         returning_flight=returning_flight.id if returning_flight else None,  # Optional return flight ID
@@ -383,11 +384,11 @@ def create_booking():
     )
 
     # If the booking creation returned an error, return the error response
-    if isinstance(booking, dict) and "error" in booking:
-        return jsonify(booking), 400
+    if create_resp.json["status"]  == "error":
+        return create_resp, 400
 
     # Return the booking details in a JSON response
-    return jsonify(booking.to_dict()), 201
+    return create_resp, 201
 
 
 # View Bookings API
@@ -403,33 +404,47 @@ def view_bookings():
     - If reference number is provided, it fetches the specific booking matching the reference.
     - Returns a list of bookings in JSON format, or an error message if no bookings are found.
     """
-    # Retrieve email and reference number from the query parameters
     email = request.args.get('email')
     bookingId = request.args.get('bookingId')
     reference_number = request.args.get('reference_number')
 
-    # Validate that at least one of the parameters (email or reference number) is provided
+    current_app.logger.debug("Starting view_bookings endpoint")
+    current_app.logger.debug(f"Query parameters received: email={email}, bookingId={bookingId}, reference_number={reference_number}")
+
+    # Validate that at least one of the parameters (email, reference number, or bookingId) is provided
     if not email and not reference_number and not bookingId:
-        return jsonify({"error": "Email or Reference Number must be provided"}), 400
+        current_app.logger.warning("Missing required parameters: email, bookingId, or reference_number")
+        return jsonify({"error": "Email, Booking ID, or Reference Number must be provided"}), 400
 
     bookings = []  # List to store the bookings that match the search criteria
 
     # If email is provided, fetch the user and their associated bookings
     if email:
+        current_app.logger.debug(f"Fetching user by email: {email}")
         user = User.query.filter_by(email=email).first()  # Find the user by email
         if not user:
+            current_app.logger.warning(f"No user found with email: {email}")
             return jsonify({"error": "User not found"}), 404  # Return an error if the user is not found
         bookings = user.bookings  # Retrieve all bookings for the user
+        current_app.logger.debug(f"Bookings retrieved for user {email}: {len(bookings)} bookings found")
 
-    # If reference number is provided, fetch the specific booking by reference number
-    if bookingId:
-        booking = get_booking(bookingId, reference_number=reference_number)  # Retrieve the booking by reference number
-        if booking:
-            bookings.append(booking)  # Add the booking to the list
-
+    # If bookingId or reference number is provided, fetch the specific booking
+    if bookingId or reference_number:
+        current_app.logger.debug(f"Fetching booking with bookingId={bookingId}, reference_number={reference_number}")
+        SearchResultJson = get_booking(bookingId, reference_number=reference_number)  # Retrieve the booking by ID or reference
+        if SearchResultJson.json["status"]=="success":
+            current_app.logger.debug(f"Booking found: {SearchResultJson.json["data"]}")
+            bookings.append(SearchResultJson.json["data"])  # Add the booking to the list
+        else:
+            current_app.logger.warning(f"No booking found for bookingId={bookingId} and reference_number={reference_number}")
+            current_app.logger.error(SearchResultJson)
     # Return the list of bookings in JSON format
-    return jsonify([booking.to_dict() for booking in bookings]), 200
-
+    if bookings:
+        current_app.logger.info(f"{len(bookings)} booking(s) retrieved successfully")
+        return jsonify([booking for booking in bookings]), 200
+    else:
+        current_app.logger.warning("No bookings found matching the criteria")
+        return jsonify({"status":"error", "message":"Booking not found"}), 404
 
 @bp.route('/booking/confirmation', methods=['POST'])
 @jwt_required()

@@ -27,7 +27,7 @@ interface Flight {
   start_date: string;
 }
 
-// Define interface for User (Owner and Passenger)
+// Define interface for User
 interface User {
   created_at: string;
   dob: string | null;
@@ -93,22 +93,32 @@ export class PaymentInfoComponent implements OnInit {
 
     this.bookingService.viewBookings(null,null, this.bookingId).subscribe(
       (response: Booking[]) => {
+        
         console.log('Booking details:', response);
-        this.departure_flight = response[0].departure_flight;
-        this.is_round_trip = response[0].is_round_trip;
-        this.returning_flight = response[0].returning_flight;
-        this.trip_status = response[0].trip_status;
-        this.reference_number = response[0].reference_number;
-        this.passengers = response[0].passengers;
-        this.booking_id = response[0].id;
-      },
-      (error) => {
-        if (error.status === 401) {
-          this.router.navigate(['/sw/login']);
-        } else {
-          console.error('Error viewing booking:', error);
-        }
+  
+        // Ensure there is at least one booking in the response array
+        if (response.length > 0) {
+          const booking = response[0]; // Access the first booking object in the array
+  
+        // Map the booking details to component properties
+        this.departure_flight = booking.departure_flight;
+        this.is_round_trip = booking.is_round_trip;
+        this.returning_flight = booking.returning_flight;
+        this.trip_status = booking.trip_status;
+        this.reference_number = booking.reference_number;
+        this.passengers = booking.passengers;
+        this.booking_id = booking.id;
+      } else {
+        console.error('No booking details found in the response.');
       }
+    },
+    (error) => {
+      if (error.status === 401) {
+        this.router.navigate(['/sw/login']);
+      } else {
+        console.error('Error viewing booking:', error);
+      }
+    }
     );
   }
 

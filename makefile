@@ -9,6 +9,14 @@ VENV_DIR = venv  # Directory for the virtual environment
 
 all: setup-venv install build serve
 
+
+rebuild:
+	cd $(ANGULAR_PROJECT_DIR) && ng build --configuration production
+	@echo "Copying built files to Flask static directory..."
+	sudo mkdir -p $(STATIC_DIR)
+	sudo cp -r $(ANGULAR_PROJECT_DIR)/dist/skyway_frontend/* $(STATIC_DIR)/
+	@echo "finished copying rebuild"
+
 setup-venv:
 	@echo "Setting up virtual environment..."
 	@python3 -m venv $(VENV_DIR)  # Create a virtual environment
